@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" />
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous" />
+  <title>{% block title %}{% endblock %} </title>
+  <style>
+    .col-md-3 {
+      display: inline-block;
+      margin-left: -4px;
+    }
+
+    .carousel-indicators .active {
+      background-color: blue;
+    }
+
+    .col-md-3 img {
+
+      width: 170px;
+      height: 200px;
+    }
+
+    body .carousel-indicator li {
+      background-color: blue;
+    }
+
+    body .carousel-indicators {
+      bottom: 0;
+    }
+
+    body .carousel-control-prev-icon,
+    body .carousel-control-next-icon {
+      background-color: blue;
+    }
+
+    .carousel-control-prev,
+    .carousel-control-next {
+      top: auto;
+      bottom: auto;
+
+    }
+
+    body .no-padding {
+      padding-left: 0;
+      padding-right: 0;
+    }
+
+    /* folows */
+    .follow {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      margin: 30px 0 30px;
+
+
+    }
+
+    .follow-image {
+      height: 25px;
+      width: 25px;
+    }
+
+    .follow * {
+      margin-right: 10px;
+    }
+
+    /* footer */
+    .footer {
+      background: #333333;
+      color: #ffffff;
+      font-size: 15px;
+      padding: 20px 0;
+
+    }
+
+    .footer-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 20px 0 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .footer div {
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+    }
+
+    .footer div i {
+      margin-right: 10px;
+    }
+
+    .footer ul {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    .footer li {
+      margin-right: 30px;
+      margin-bottom: 20px;
+      color: #ffffff;
+    }
+
+    .footer-link {
+      color: #ffffff;
+
+    }
+
+    .footer-link:hover {
+      color: #dadada;
+      text-decoration: none;
+    }
+
+    /*slider*/
+
+
+
+    .home {
+      height: 50em;
+
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    .home .slide {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 50%;
+      background-size: cover;
+      background-position: center;
+      z-index: 1;
+      display: none;
+      padding: 0 15px;
+      animation: slide 2s ease;
+    }
+
+    .home .slide.active {
+      display: flex;
+    }
+
+    @keyframes slide {
+      0% {
+        transform: scale(1.1);
+      }
+
+      100% {
+        transform: scale(1);
+      }
+    }
+
+    .container {
+      max-width: 1170px;
+      margin: auto;
+
+    }
+
+    .home .container {
+      flex-grow: 1;
+
+    }
+
+    .home .caption {
+      width: 50%;
+    }
+
+    .home .caption h1 {
+      font-size: 45px;
+      color: rgb(255, 255, 255);
+      margin: 0;
+      animation: captionText .5s ease forwards;
+
+    }
+
+    .home .slide.active .caption h1 {
+      opacity: 0;
+      animation: captionText .5s ease forwards;
+      animation-delay: 1s;
+    }
+
+    .home .caption p {
+      font-size: 20px;
+      margin: 15px 0 20px;
+      color: rgb(255, 255, 255);
+    }
+
+    .home .slide.active .caption p {
+      opacity: 0;
+      animation: captionText .5s ease forwards;
+      animation-delay: 1.2s;
+    }
+
+    .home .caption a {
+      display: inline-block;
+      padding: 10px 30px;
+      background-color: #000000;
+      text-decoration: none;
+      color: #ffffff
+    }
+
+    .home .slide.active .caption a {
+      opacity: 0;
+      animation: captionText .5s ease forwards;
+      animation-delay: 1.4s;
+    }
+
+    @keyframes captionText {
+      0% {
+        opacity: 0;
+        transform: translateX(-100px);
+      }
+
+      100% {
+        opacity: 1;
+        transform: translateX(0px);
+      }
+    }
+
+    /*
+ .home .controls .prev,
+    .home .controls .next {
+      position: absolute;
+      z-index: 2;
+      top: 50%;
+      height: 40px;
+      width: 40px;
+      margin-top: -250px;
+      color: #ffffff;
+      background-color: rgb(248, 170, 170);
+      text-align: center;
+      line-height: 40px;
+      font-size: 20px;
+      cursor: pointer;
+      transition: all .5s ease;
+    }
+*/
+
+
+    .home .controls .prev:hover,
+    .home .controls .next:hover {
+      background-color: #000000
+    }
+
+    .home .controls .prev {
+      left: 0;
+    }
+
+    .home .controls .next {
+      right: 0;
+    }
+
+    /* responsive */
+    @media (max-width: 767px) {
+      .controls {
+        display: none;
+      }
+    }
+
+    /*split sceen*/
+    body {
+      font-family: Arial;
+
+    }
+
+    .split {
+      height: 70%;
+      width: 50%;
+      position: absolute;
+      z-index: 1;
+      top: 0;
+      overflow-x: hidden;
+      padding-top: 20px;
+      margin-top: 470px;
+
+    }
+
+    .left {
+      left: 0;
+      padding-left: 50px;
+      ;
+
+    }
+
+    .right {
+      right: 0;
+      padding-right: 100px;
+    }
+
+    .centered {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+
+    }
+
+    .centered img {
+      width: 100%;
+      height: 100%;
+
+    }
+
+    /*section counter*/
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    /* Float four columns side by side */
+    .column {
+      float: left;
+      width: 25%;
+      padding: 0 5px;
+    }
+
+    .row {
+      margin: 0 -5px;
+    }
+
+    /* Clear floats after the columns */
+    .row:after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+
+    /* Responsive columns */
+    @media screen and (max-width: 600px) {
+      .column {
+        width: 100%;
+        display: block;
+        margin-bottom: 10px;
+      }
+    }
+
+    /* Style the counter cards */
+    .card1 {
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+      padding: 16px;
+      text-align: center;
+      background-color: #444;
+      color: white;
+    }
+
+    .fa {
+      font-size: 50px;
+    }
+
+    #cards {
+      position: relative;
+      padding-top: 54vh;
+    }
+
+    .goXplor {
+      height: 65px;
+      width: 95px;
+
+    }
+
+    .navbar-trans {
+      background: transparent;
+
+    }
+
+    .navbar {
+      transition: all 0.4s;
+    }
+
+    .navbar .nav-link {
+      color: #333333;
+    }
+
+    .navbar .nav-link:hover,
+    .navbar .nav-link:focus {
+      color: #c4f3f7;
+      text-decoration: none;
+    }
+
+
+    /* Change navbar styling on scroll */
+    .navbar.active {
+      background: #333333;
+      box-shadow: 1px 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .navbar.active .nav-link {
+      color: rgb(255, 255, 255);
+
+    }
+
+    .navbar.active .nav-link:hover,
+    .navbar.active .nav-link:focus {
+      color: #555;
+      text-decoration: none;
+    }
+
+    .navbar.active .navbar-brand {
+      color: #555;
+    }
+
+
+    /* Change navbar styling on small viewports */
+    @media (max-width: 991.98px) {
+      .navbar {
+        background: #fff;
+      }
+
+      .navbar .navbar-brand,
+      .navbar .nav-link {
+        color: rgb(255, 255, 255);
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-md navbar-dark fixed-top  navbar-trans">
+    <a class="navbar-brand " href="{% url 'index' %}"><img class="goXplor" src="/static/home/images/goXplor.png" /></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+      aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a class="nav-item nav-link active" href="{% url 'index' %}"><b>goXplor</b><span
+            class="sr-only">(current)</span></a>
+        <a class="nav-item nav-link" href="{% url 'about' %}" style="color: white;"><b>About</b></a>
+        <a class="nav-item nav-link" href="{% url 'contact' %}" style="color: white;"><b>Contact</b></a>
+        <a class="nav-item nav-link" href="#" style="color: white;"><b>Blog</b></a>
+      </div>
+    </div>
+
+  </nav>
+  {% block body %}{% endblock %}
+
+  <section class="follow" style="margin-right: 50%;">
+    <p>Follow Microsoft</p>
+    <a href="https://facebook.com">
+      <img class="follow-image" src="/static/home/images/facebook.png" alt="Facebook" />
+    </a>
+    <a href="https://twitter.com">
+      <img class="follow-image" src="/static/home/images/twitter.png" alt="Twitter" />
+    </a>
+    <a href="https://instagram.com">
+      <img class="follow-image" src="/static/home/images/instagram.png" alt="Instagram" />
+    </a>
+    <a href="https://youtube.com">
+      <img class="follow-image" src="/static/home/images/youtube.png" alt="Youtube" />
+    </a>
+  </section>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer mt-auto py-3">
+    <div class="footer-inner">
+      <div><i class="fas fa-globe fa-2x"></i> English (United States)</div>
+      <ul>
+        <li><a class="footer-link" href="{% url 'contact' %}">Contact Us</a></li>
+
+        <li><a class="footer-link" href="{% url 'about' %}">Terms of use</a></li>
+
+        <li><a class="footer-link" href="#">&copy; All Rigths Reserved 2020</a></li>
+      </ul>
+      <p class="float-right footer-link"><a href="#">Back to top</a></p>
+    </div>
+  </footer>
+
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+    integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+    crossorigin="anonymous"></script>
+  <script>
+    $(function () {
+      $(window).on('scroll', function () {
+        if ($(window).scrollTop() > 10) {
+          $('.navbar').addClass('active');
+        } else {
+          $('.navbar').removeClass('active');
+        }
+      });
+    });
+  </script>
+  {% block js %}{% endblock %}
+</body>
+
+</html>
