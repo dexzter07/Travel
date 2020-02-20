@@ -1,41 +1,32 @@
-{% extends 'home/base.html' %}
+{% extends 'blog/base.html' %}
 
-{% block title %}goXplor{% endblock %}
 {% block body %}
 <div class="container">
     <div class="row mt-4">
-        <div class="col-md-8 blog-main" style="margin-top: 15vh;">
+        <div class="col-md-8 blog-main">
+            <h3 class="font-italic">
+                {{post.title}}
+            </h3>
 
-            <h3>Contact Us</h3>
-            <form action="/contact/" method="post">{% csrf_token %}
-                <div class="form-group">
-                    <label for="name">Name</label>
-                    <input type="text" class="form-control" id="name" name='name' placeholder="Enter Your Name">
-                </div>
-                <div class="form-group">
-                    <label for="name">Email</label>
-                    <input type="email" class="form-control" id="email" name='email' placeholder="Enter Your Email">
-                </div>
+            <div class="blog-post">
+                <img src="/media/{{ post.images }}" <h2 class="blog-post-title">{{post.heading0}}</h2>
+                <p class="blog-post-meta">{{post.pub_date}} <span>-{{post.author}}</span></p>
 
-                <div class="form-group">
-                    <label for="name">Phone</label>
-                    <input type="tel" class="form-control" id="phone" name='phone'
-                        placeholder="Enter Your Phone Number">
-                </div>
+                <p>{{post.chead0}}</p>
 
 
-                <div class="form-group">
-                    <label for="desc">How May We Help You?</label>
-                    <textarea class="form-control" id="desc" name='desc' rows="3"></textarea>
-                </div>
-                <button type="submit" class="btn btn-success">Submit</button>
-            </form>
+                <h2>{{post.head1}}</h2>
+                <p>{{post.chead1}}</p>
+                <h2>{{post.head2}}</h2>
+                <p>{{post.chead2}}</p>
+
+
+            </div><!-- /.blog-post -->
 
 
 
 
-        </div>
-
+        </div><!-- /.blog-main -->
 
         <aside class="col-md-4 blog-sidebar">
             <div class="p-4 mb-3 bg-light rounded">
@@ -70,7 +61,9 @@
                 </a>
 
             </div>
-        </aside>
+        </aside><!-- /.blog-sidebar -->
+
     </div>
 </div>
+
 {% endblock %}

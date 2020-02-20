@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+        integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+    <title>{% block title%} {% endblock %}</title>
+    <style>
+        /* folows */
+        .follow {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            margin: 30px 0 30px;
+
+
+        }
+
+        .follow-image {
+            height: 25px;
+            width: 25px;
+        }
+
+        .follow * {
+            margin-right: 10px;
+        }
+
+        /* footer */
+        .footer {
+            background: #333333;
+            color: #ffffff;
+            font-size: 15px;
+            padding: 20px 0;
+
+        }
+
+        .footer-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px 0 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .footer div {
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        .footer div i {
+            margin-right: 10px;
+        }
+
+        .footer ul {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .footer li {
+            margin-right: 30px;
+            margin-bottom: 20px;
+            color: #ffffff;
+        }
+
+        .footer-link {
+            color: #ffffff;
+
+        }
+
+        .footer-link:hover {
+            color: #dadada;
+            text-decoration: none;
+        }
+
+        .goXplor {
+            height: 65px;
+            width: 95px;
+
+        }
+
+        .navbar-trans {
+            background: transparent;
+
+        }
+
+        .navbar {
+            transition: all 0.4s;
+        }
+
+        .navbar .nav-link {
+            color: #333333;
+        }
+
+        .navbar .nav-link:hover,
+        .navbar .nav-link:focus {
+            color: #c4f3f7;
+            text-decoration: none;
+        }
+
+
+        /* Change navbar styling on scroll */
+        .navbar.active {
+            background: #333333;
+            box-shadow: 1px 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar.active .nav-link {
+            color: rgb(255, 255, 255);
+
+        }
+
+        .navbar.active .nav-link:hover,
+        .navbar.active .nav-link:focus {
+            color: #555;
+            text-decoration: none;
+        }
+
+        .navbar.active .navbar-brand {
+            color: #555;
+        }
+
+
+        /* Change navbar styling on small viewports */
+        @media (max-width: 991.98px) {
+            .navbar {
+                background: #fff;
+            }
+
+            .navbar .navbar-brand,
+            .navbar .nav-link {
+                color: rgb(255, 255, 255);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4  navbar-trans">
+        <a class="navbar-brand " href="{% url 'index' %}"><img class="goXplor"
+                src="/static/home/images/goXplor.png" /></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+            aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <a class="nav-item nav-link active" href="{% url 'index' %}"><b>goXplor</b><span
+                        class="sr-only">(current)</span></a>
+                <a class="nav-item nav-link" href="/about" style="color: white;"><b>About</b></a>
+                <a class="nav-item nav-link" href="/contact" style="color: white;"><b>Contact</b></a>
+                <a class="nav-item nav-link" href="/blog" style="color: white;"><b>Blog</b></a>
+            </div>
+        </div>
+
+    </nav>
+    {% block body %}{% endblock %}
+
+    <section class="follow" style="margin-right: 50%;">
+        <p>Follow goXplor</p>
+        <a href="https://facebook.com">
+            <img class="follow-image" src="/static/home/images/facebook.png" alt="Facebook" />
+        </a>
+        <a href="https://twitter.com">
+            <img class="follow-image" src="/static/home/images/twitter.png" alt="Twitter" />
+        </a>
+        <a href="https://instagram.com">
+            <img class="follow-image" src="/static/home/images/instagram.png" alt="Instagram" />
+        </a>
+        <a href="https://youtube.com">
+            <img class="follow-image" src="/static/home/images/youtube.png" alt="Youtube" />
+        </a>
+    </section>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer mt-auto py-3">
+        <div class="footer-inner">
+            <div><i class="fas fa-globe fa-2x"></i> English (United States)</div>
+            <ul>
+                <li><a class="footer-link" href="{% url 'contact' %}">Contact Us</a></li>
+
+                <li><a class="footer-link" href="{% url 'about' %}">Terms of use</a></li>
+
+                <li><a class="footer-link" href="#">&copy; All Rigths Reserved 2020</a></li>
+            </ul>
+            <p class="float-right footer-link"><a href="#">Back to top</a></p>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+    <script>
+        $(function () {
+            $(window).on('scroll', function () {
+                if ($(window).scrollTop() > 10) {
+                    $('.navbar').addClass('active');
+                } else {
+                    $('.navbar').removeClass('active');
+                }
+            });
+        });
+    </script>
+    {% block js %}{% endblock %}
+</body>
+
+</html>
