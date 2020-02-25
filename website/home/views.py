@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from . models import Destinations, Contact, Inquiry, Package
+from . models import Destinations, Contact, Inquiry, Package, Orders
 from math import ceil
 
 # Create your views here.
@@ -65,3 +65,27 @@ def package(request):
         allPack.append([dest, range(1, nSlides), nSlides])
     params = {'allPack': allPack}
     return render(request, 'home/package.html', params)
+
+
+def checkout(request):
+    if request.method == "POST":
+        items_json = request.POST.get('itemsJson', '')
+        firstName = request.POST.get('firstName', '')
+        lastName = request.POST.get('lastName', '')
+
+        email = request.POST.get('email', '')
+        phone = request.POST.get('phone', '')
+        address = request.POST.get('address', '')
+        address1 = request.POST.get('address1', '')
+        city = request.POST.get('city', '')
+        state = request.POST.get('state', '')
+        zipcode = request.POST.get('zipcode', '')
+
+        order = Orders(items_json=items_json, firstName=firstName, lastName=lastName, email=email, phone=phone, address=address,
+                       address1=address1, city=city, state=state, zipcode=zipcode)
+        order.save()
+        thank = True
+        id = order.order_id
+        return render(request, 'home/checkout.html', {'thank': thank, 'id': id})
+
+    return render(request, 'home/checkout.html')

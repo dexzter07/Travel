@@ -45,6 +45,7 @@ class Inquiry(models.Model):
 
 
 class Package(models.Model):
+    id = models.AutoField
     name = models.CharField(max_length=100, default="")
     category = models.CharField(max_length=100, default="")
     image = models.ImageField(upload_to='pics')
@@ -60,3 +61,20 @@ class Package(models.Model):
         Discount = ceil(
             ((self.orginalPrice-self.price)/self.orginalPrice) * 100)
         return Discount
+
+
+class Orders(models.Model):
+    order_id = models.AutoField(primary_key=True)
+    items_json = models.CharField(max_length=5000)
+    firstName = models.CharField(max_length=150)
+    lastName = models.CharField(max_length=150)
+    phone = models.IntegerField()
+    email = models.EmailField(max_length=150)
+    address = models.CharField(max_length=250)
+    address1 = models.CharField(max_length=250, null=True)
+    city = models.CharField(max_length=250)
+    state = models.CharField(max_length=100)
+    zipcode = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.email
