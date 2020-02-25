@@ -588,17 +588,17 @@
 
     .card-offer {
 
-      display: block;
+      display: inline-block;
       position: absolute;
-      right: 30px;
+      right: 0;
       line-height: 0px;
-      text-align: center;
-      padding: 5px;
-      margin-top: -5px;
-      background: #fff;
-      color: #262626;
+      background-color: #ff0000;
+      padding: 18px;
+      border-radius: 20px;
+
+      color: white;
       font-weight: bold;
-      transition: .5s;
+
 
     }
   </style>
@@ -613,7 +613,7 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav">
-        <a class="nav-item nav-link active" href="{% url 'index' %}"><b>goXplor</b><span
+        <a class="nav-item nav-link active" href="{% url 'index' %}"><b>goXplores</b><span
             class="sr-only">(current)</span></a>
         <a class="nav-item nav-link" href="{% url 'about' %}" style="color: white;"><b>About</b></a>
         <a class="nav-item nav-link" href="{% url 'contact' %}" style="color: white;"><b>Contact</b></a>
@@ -664,7 +664,7 @@
   </div>
 
   <section class=" follow" style="margin-right: 50%;">
-    <p>Follow goXplor</p>
+    <p style="font-weight: bolder;">Follow goXplores</p>
     <a href="https://facebook.com">
       <img class="follow-image" src="/static/home/images/facebook.png" alt="Facebook" />
     </a>

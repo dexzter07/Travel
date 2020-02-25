@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from . models import Destinations, Contact, Inquiry
+from . models import Destinations, Contact, Inquiry, Package
 from math import ceil
 
 # Create your views here.
@@ -54,4 +54,14 @@ def inquiry(request):
 
 
 def package(request):
-    return render(request, "home/package.html")
+    allPack = []
+    catdest = Package.objects.values('category', 'id')
+    cats = {item['category'] for item in catdest}
+    for cat in cats:
+        dest = Package.objects.filter(category=cat)
+        n = len(dest)
+        nSlides = n // 4 + ceil((n / 4) - (n // 4))
+
+        allPack.append([dest, range(1, nSlides), nSlides])
+    params = {'allPack': allPack}
+    return render(request, 'home/package.html', params)

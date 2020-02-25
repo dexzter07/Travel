@@ -51,7 +51,7 @@
                 <p class="card-text">With supporting text below as a natural lead-in to additional content. A small
                   river
                   named Duden flows by their place and supplies it with the necessary regelialia.</p>
-                <a href="#" class="btn btn-info">Find Packages</a>
+                <a href="{% url 'package' %}" class="btn btn-info">Find Packages</a>
               </div>
             </div>
           </div>
@@ -67,7 +67,7 @@
                 <p class="card-text">With supporting text below as a natural lead-in to additional content. A small
                   river
                   named Duden flows by their place and supplies it with the necessary regelialia.</p>
-                <a href="#" class="btn btn-info">Find Packages</a>
+                <a href="{% url 'package' %}" class="btn btn-info">Find Packages</a>
               </div>
             </div>
           </div>
@@ -83,7 +83,7 @@
                 <p class="card-text">With supporting text below as a natural lead-in to additional content. A small
                   river
                   named Duden flows by their place and supplies it with the necessary regelialia.</p>
-                <a href="#" class="btn btn-info">Find Packages</a>
+                <a href="{% url 'package' %}" class="btn btn-info">Find Packages</a>
               </div>
             </div>
           </div>
@@ -99,7 +99,7 @@
                 <p class="card-text">With supporting text below as a natural lead-in to additional content. A small
                   river
                   named Duden flows by their place and supplies it with the necessary regelialia.</p>
-                <a href="#" class="btn btn-info">Find Packages</a>
+                <a href="{% url 'package' %}" class="btn btn-info">Find Packages</a>
               </div>
             </div>
           </div>
@@ -163,9 +163,15 @@
               <h5 class="card-title">{{i.name}}</h5>
 
               <p class="card-text">{{i.description}}</p>
-              <a href="#" class="btn btn-primary">Buy now</a>
+              <a href="{% url 'package' %}" class="btn" style="background-color: turquoise;">Buy now</a>
               {% if i.offer %}
-              <p class="card-offer">Special Offer</p>
+              <span class="origprice"><strike>₹{{ i.originalPrice }}</strike></span>
+              <span class="price">₹{{ i.price }}</span>
+              <div class="discount">
+                <p>{{ i.DiscountCalc }}% off</p>
+              </div>
+              {% else %}
+              <span class="origprice">₹{{ i.originalPrice }}</span>
               {% endif %}
             </div>
           </div>
@@ -246,8 +252,9 @@
                 of Grammar.</p>
               <p>A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a
                 paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
-              <p><a href="#" class="btn btn-primary py-3 px-4">Book now</a> <a href="{% url 'contact' %}"
-                  class="btn btn-white py-3 px-4">Contact us</a></p>
+              <p><a href="{% url 'package' %}" class="btn btn-primary py-3 px-4">Book now</a> <a
+                  href="{% url 'contact' %}" class="btn py-3 px-4" style="background-color: turquoise;">Contact us</a>
+              </p>
             </div>
           </div>
         </div>

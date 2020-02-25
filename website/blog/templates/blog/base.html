@@ -155,12 +155,154 @@
             font-size: 20px;
             background-image: linear-gradient(#333333, #969696);
         }
+
+        /*Inquiry*/
+
+
+        /* Full-width input fields */
+        input[type=text],
+        input[type=email] {
+            width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+
+
+
+        button:hover {
+            opacity: 0.8;
+        }
+
+        /* Extra styles for the cancel button */
+        .cancelbtn {
+            width: auto;
+            padding: 10px 18px;
+            background-color: #f44336;
+        }
+
+
+
+        .container {
+            padding: 16px;
+        }
+
+        span.email {
+            float: right;
+            padding-top: 16px;
+        }
+
+        /* The Modal (background) */
+        .modal {
+            display: none;
+            /* Hidden by default */
+            position: fixed;
+            /* Stay in place */
+            z-index: 1;
+            /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%;
+            /* Full width */
+            height: 100%;
+            /* Full height */
+            overflow: hidden;
+            /* Enable scroll if needed */
+            background-color: rgb(0, 0, 0);
+            /* Fallback color */
+            background-color: rgba(0, 0, 0, 0.4);
+            /* Black w/ opacity */
+            padding-top: 60px;
+        }
+
+        /* Modal Content/Box */
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto 15% auto;
+            /* 5% from the top, 15% from the bottom and centered */
+            border: 1px solid #888;
+            width: 300px;
+            /* Could be more or less, depending on screen size */
+        }
+
+        /* The Close Button (x) */
+        .close {
+            position: absolute;
+            right: 25px;
+            top: 0;
+            color: #000;
+            font-size: 35px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: red;
+            cursor: pointer;
+        }
+
+        /* Add Zoom Animation */
+        .animate {
+            -webkit-animation: animatezoom 0.6s;
+            animation: animatezoom 0.6s
+        }
+
+        @-webkit-keyframes animatezoom {
+            from {
+                -webkit-transform: scale(0)
+            }
+
+            to {
+                -webkit-transform: scale(1)
+            }
+        }
+
+        @keyframes animatezoom {
+            from {
+                transform: scale(0)
+            }
+
+            to {
+                transform: scale(1)
+            }
+        }
+
+        /* Change styles for span and cancel button on extra small screens */
+        @media screen and (max-width: 300px) {
+            span.email {
+                display: block;
+                float: none;
+            }
+
+            .cancelbtn {
+                width: 100%;
+            }
+        }
+
+        .inquiry {
+            cursor: poiner;
+            padding: 10px 15px;
+            border-radius: 10px 0 0 10px;
+            position: fixed;
+            bottom: 200px;
+            right: 0px;
+            z-index: 100000;
+            color: white;
+            background-color: #333333;
+        }
+
+        .inquiry:hover {
+            background-image: linear-gradient(#333333, rgb(221, 216, 216));
+        }
     </style>
     <script async defer crossorigin="anonymous"
         src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v6.0"></script>
 </head>
 
 <body>
+
     <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4  navbar-trans">
         <a class="navbar-brand " href="{% url 'index' %}"><img class="goXplor"
                 src="/static/home/images/goXplor.png" /></a>
@@ -170,7 +312,7 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
-                <a class="nav-item nav-link active" href="{% url 'index' %}"><b>goXplor</b><span
+                <a class="nav-item nav-link active" href="{% url 'index' %}"><b>goXplores</b><span
                         class="sr-only">(current)</span></a>
                 <a class="nav-item nav-link" href="/about" style="color: white;"><b>About</b></a>
                 <a class="nav-item nav-link" href="/contact" style="color: white;"><b>Contact</b></a>
@@ -179,10 +321,50 @@
         </div>
 
     </nav>
+
+    <button class="inquiry" onclick="document.getElementById('id01').style.display='block'" style="width:auto;">
+        <div>I</div>
+        <div>N</div>
+        <div>Q</div>
+        <div>U</div>
+        <div>I</div>
+        <div>R</div>
+        <div>Y</div>
+    </button>
+
+    <div id="id01" class="modal">
+
+        <form class="modal-content animate" action="/inquiry/" method="post">{% csrf_token %}
+            <span onclick="document.getElementById('id01').style.display='none'" class="close"
+                title="Close Modal">&times;</span>
+            <div class="container">
+                <label for="name"><b>Name</b></label>
+                <input type="text" placeholder="Enter Name" name="name" required>
+
+                <label for="email"><b>Email</b></label>
+                <input type="email" placeholder="Enter Email" name="email" required>
+
+                <label for="phone"><b>Contact us</b></label>
+                <input type="text" placeholder="Enter Contact number" name="phone" required>
+
+
+
+                <button class="btn btn-primary " style="width: 100%;" type="submit">Submit</button>
+
+            </div>
+
+            <div class="container" style="background-color:#f1f1f1">
+                <button type="button" onclick="document.getElementById('id01').style.display='none'"
+                    class="btn btn-danger">Cancel</button>
+
+            </div>
+        </form>
+    </div>
+
     {% block body %}{% endblock %}
 
     <section class="follow" style="margin-right: 50%;">
-        <p>Follow goXplor</p>
+        <p>Follow goXplores</p>
         <a href="https://facebook.com">
             <img class="follow-image" src="/static/home/images/facebook.png" alt="Facebook" />
         </a>
@@ -211,7 +393,6 @@
 
                 <li><a class="footer-link" href="{% url 'about' %}">Terms of use</a></li>
 
-                <li><a class="footer-link" href="#">&copy; All Rigths Reserved 2020</a></li>
             </ul>
             <div><i class="fas fa-globe fa-2x"></i>&copy; All Rigths Reserved 2020</div>
         </div>

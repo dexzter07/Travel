@@ -1,18 +1,25 @@
 from django.db import models
+from math import ceil
 
 # Create your models here.
 
 
 class Destinations(models.Model):
-    name = models.CharField(max_length=100)
-    category = models.CharField(max_length=100)
+    name = models.CharField(max_length=100, default="")
+    category = models.CharField(max_length=100, default="")
     image = models.ImageField(upload_to='pics')
     description = models.TextField()
     price = models.IntegerField()
-    offer = models.BooleanField(blank=True)
+    offer = models.BooleanField(default=False)
+    originalPrice = models.IntegerField()
 
     def __str__(self):
         return self.category
+
+    def DiscountCalc(self):
+        Discount = ceil(
+            ((self.originalPrice-self.price)/self.originalPrice) * 100)
+        return Discount
 
 
 class Contact(models.Model):
@@ -30,7 +37,7 @@ class Inquiry(models.Model):
     msg_id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=100, default="", blank=False)
     email = models.EmailField(
-        max_length=100, default="", blank=False, unique=True)
+        max_length=100, default="", blank=False,)
     contact = models.CharField(max_length=100, default="", blank=False)
 
     def __str__(self):
@@ -38,12 +45,18 @@ class Inquiry(models.Model):
 
 
 class Package(models.Model):
-    name = models.CharField(max_length=100)
-    category = models.CharField(max_length=100)
+    name = models.CharField(max_length=100, default="")
+    category = models.CharField(max_length=100, default="")
     image = models.ImageField(upload_to='pics')
     description = models.TextField()
+    offer = models.BooleanField(default=False)
+    orginalPrice = models.IntegerField()
     price = models.IntegerField()
-    offer = models.BooleanField(blank=True)
 
     def __str__(self):
         return self.category
+
+    def DiscountCalc(self):
+        Discount = ceil(
+            ((self.orginalPrice-self.price)/self.orginalPrice) * 100)
+        return Discount
