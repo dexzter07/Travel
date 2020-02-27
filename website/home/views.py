@@ -39,6 +39,8 @@ def contact(request):
         desc = request.POST.get('desc', '')
         contact = Contact(name=name, email=email, phone=phone, desc=desc)
         contact.save()
+        thank = True
+        return render(request, 'home/contact.html', {'thank': thank})
     return render(request, 'home/contact.html')
 
 
@@ -50,6 +52,9 @@ def inquiry(request):
 
         inquiry = Inquiry(name=name, email=email, contact=phone)
         inquiry.save()
+        thank = True
+
+        return render(request, 'home/index.html', {'thank': thank})
     return render(request, 'home/index.html')
 
 
@@ -80,9 +85,10 @@ def checkout(request):
         city = request.POST.get('city', '')
         state = request.POST.get('state', '')
         zipcode = request.POST.get('zipcode', '')
+        amount = request.POST.get('amount', '')
 
         order = Orders(items_json=items_json, firstName=firstName, lastName=lastName, email=email, phone=phone, address=address,
-                       address1=address1, city=city, state=state, zipcode=zipcode)
+                       address1=address1, city=city, state=state, zipcode=zipcode, amount=amount)
         order.save()
         thank = True
         id = order.order_id

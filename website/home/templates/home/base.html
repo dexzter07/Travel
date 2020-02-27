@@ -70,54 +70,7 @@
       margin-right: 10px;
     }
 
-    /* footer */
-    .footer {
-      background: #333333;
-      color: #ffffff;
-      font-size: 15px;
-      padding: 20px 0;
 
-    }
-
-    .footer-inner {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 0 20px 0 20px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .footer div {
-      margin-bottom: 20px;
-      display: flex;
-      align-items: center;
-    }
-
-    .footer div i {
-      margin-right: 10px;
-    }
-
-    .footer ul {
-      display: flex;
-      flex-wrap: wrap;
-    }
-
-    .footer li {
-      margin-right: 30px;
-      margin-bottom: 20px;
-      color: #ffffff;
-    }
-
-    .footer-link {
-      color: #ffffff;
-
-    }
-
-    .footer-link:hover {
-      color: #dadada;
-      text-decoration: none;
-    }
 
     /*slider*/
 
@@ -599,14 +552,21 @@
       color: white;
       font-weight: bold;
 
+    }
 
+    #popcart {
+      color: #ffffff;
+      font-weight: bolder;
+      float: right;
+      border-color: transparent;
     }
   </style>
 </head>
 
 <body>
   <nav class="navbar navbar-expand-md navbar-dark fixed-top  navbar-trans">
-    <a class="navbar-brand " href="{% url 'index' %}"><img class="goXplor" src="/static/home/images/goXplor.png" /></a>
+    <a class="navbar-brand " href="{% url 'index' %}"><img class="goXplor" style="border-radius: 40px;"
+        src="/static/home/images/goXplor.png" /></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
       aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -617,18 +577,14 @@
             class="sr-only">(current)</span></a>
         <a class="nav-item nav-link" href="{% url 'about' %}" style="color: white;"><b>About</b></a>
         <a class="nav-item nav-link" href="{% url 'contact' %}" style="color: white;"><b>Contact</b></a>
+        <a class="nav-item nav-link" href="{% url 'package' %}" style="color: white;"><b>Packages</b></a>
         <a class="nav-item nav-link" href="/blog" style="color: white;"><b>Blog</b></a>
       </div>
-      <form class="form-inline my-2 my-lg-0">
-        <button type="button" class="btn btn-secondary mx-2 my-2 my-lg-0" id="popcart" data-container="body"
-          data-toggle="popover" data-placement="bottom" data-html="true" data-content="Vivamus
-      sagittis lacus vel augue laoreet rutrum faucibus.">
 
-
-          Cart(<span id="cart">0</span>)
-        </button>
-      </form>
-
+      <button type="button" class=" ml-auto hidden-sm-up float-xs-right btn btn-transparent mx-2 my-2 my-lg-0"
+        id="popcart" data-container="body" data-toggle="popover" data-placement="bottom" data-html="true">
+        Cart <span id="cart" class="badge badge-warning">0</span>
+      </button>
     </div>
 
   </nav>
@@ -693,17 +649,73 @@
   <button onclick="topFunction()" id="top" style="display: block;"><i style="color: #ffffff;"
       aria-hidden="true">Top</i></button>
   <!-- Footer -->
-  <footer class="footer mt-auto py-3">
-    <div class="footer-inner">
-      <div><i class="fas fa-globe fa-2x"></i> English (United States)</div>
-      <ul>
-        <li><a class="footer-link" href="{% url 'contact' %}">Contact Us</a></li>
 
-        <li><a class="footer-link" href="{% url 'about' %}">Terms of use</a></li>
+  <footer class="ftco-footer ftco-section  mt-auto py-3" style="background-color: #333333;
+    color: whitesmoke;">
+    <div class="container">
+      <div class="row mb-5">
+        <div class="col-md">
+          <div class="ftco-footer-widget mb-4">
+            <h2 class="ftco-heading-2">About <span><a href="{% url 'index' %}">goXplores</a></span></h2>
+            <p>goXplores is one of the sikkim tour packages is basically located in gangtok, sikkim.</p>
 
-      </ul>
+          </div>
+        </div>
+        <div class="col-md">
+          <div class="ftco-footer-widget mb-4 ml-md-4">
+            <h2 class="ftco-heading-2">Information</h2>
+            <ul class="list-unstyled">
+              <li><span class="icon-long-arrow-right mr-2"></span>Online Enquiry</li>
 
-      <div><i class="fas fa-globe fa-2x"></i>&copy; All Rigths Reserved 2020</div>
+              <li><span class="icon-long-arrow-right mr-2"></span>Booking</li>
+              <!-- <li><span class="icon-long-arrow-right mr-2"></span>Privacy</li> -->
+              <!-- <li><span class="icon-long-arrow-right mr-2"></span>Refund Policy</li> -->
+              <li><span class="icon-long-arrow-right mr-2"></span>Call Us</li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-md">
+          <div class="ftco-footer-widget mb-4">
+            <h2 class="ftco-heading-2">We Deals With</h2>
+            <ul class="list-unstyled">
+              <li><span class="icon-long-arrow-right mr-2"></span>Adventure</li>
+              <li><span class="icon-long-arrow-right mr-2"></span>Hotel and Restaurant</li>
+              <li><span class="icon-long-arrow-right mr-2"></span>Sight seeing</li>
+              <li><span class="icon-long-arrow-right mr-2"></span>Nature</li>
+              <li><span class="icon-long-arrow-right mr-2"></span>Travel</li>
+              <li><span class="icon-long-arrow-right mr-2"></span>Party</li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-md">
+          <div class="ftco-footer-widget mb-4">
+            <h2 class="ftco-heading-2">Have a Questions?</h2>
+            <div class="block-23 mb-3">
+              <ul>
+                <li><span class="icon icon-map-marker"></span><span class="text">New Market, M.G.Marg, Gangtok, Sikkim,
+                    India
+                  </span></li>
+                <li><span class="icon icon-phone"></span><span class="text">8972733345</span></li>
+                <li><span class="icon icon-phone"></span><span class="text">7908111760</span></li>
+                <li><span class="icon icon-phone"></span><span class="text">8637390902</span></li>
+                <li><span class="icon icon-envelope"></span><span class="text">dextersharma960@gmail.com</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12 text-center">
+
+          <p>
+
+            Copyright&copy;
+            <script>document.write(new Date().getFullYear());</script> All rights reserved.
+
+          </p>
+        </div>
+      </div>
     </div>
   </footer>
 

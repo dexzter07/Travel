@@ -1,10 +1,19 @@
 {% extends "home/base.html" %}
 {% block title %}goXplores{% endblock %}
 {% block body %}
+<div class="container-fluid">
+    <img style="    height: 47vh;
+    width: 100%;" src="/static/home/images/himalaya1.jpg" alt="image" />
+</div>
 <div class="album py-5 bg-light">
     <div class="container">
         {% for destination, range, nSlides in allPack %}
-        <h5 class="my-4" style="font-weight: bolder;">Flash Sale On {{destination.0.category}} -Travel Packages</h5>
+        <div style="background-color:#D6EAF8; color:#2874A6" class="py-2">
+            <h5 class="my-4" style="font-weight: bolder;">Special Discount On {{destination.0.category}} -Travel
+                Packages
+            </h5>
+        </div>
+
         <div id="demo{{forloop.counter}}" class="my-3">
 
 
@@ -13,30 +22,35 @@
                 {% for i in destination %}
                 <div class="col-md-4">
                     <div class="card mb-4 shadow-sm">
-                        <img src="/media/{{i.image}}" class="card-img-top" alt="...">
+                        <img src="/media/{{i.image}}" class="card-img-top" style="width: 100%; height:30vh;" alt="...">
                         <div class="card-body">
                             <h5 id="namepr{{i.id}}" class="card-title">{{i.name}}</h5>
+                            {% if i.offer %}
+                            <div class="discount">
+                                <h6 style="color: rgb(255, 4, 4);">{{ i.DiscountCalc }}% off</h6>
+                            </div>
+                            {% endif %}
                             <p class="card-text">{{i.description}}</p>
-                            <div class="d-flex justify-content-between align-items-center">
+                            <div class="d-flex justify-content-between">
                                 <span id="divpr{{i.id}}" class="divpr">
-                                    <button id="pr{{i.id}}" class="btn btn-primary cart">Add To Cart</button>
+                                    <button id="pr{{i.id}}" class="btn btn-primary cart">Book Now</button>
                                 </span>
-                                <div>
-                                    <button type="button" class="btn btn-sm btn-outline-secondary">Contact</button>
-                                </div>
-                                {% if i.offer %}
-                                <span class="origprice"><strike>₹{{ i.orginalPrice }}</strike></span>
-                                <h6 class="card-title">₹
-                                    <span class="card-title" id="pricepr{{i.id}}">{{i.price}}</span></h6>
-                                <div class="discount">
-                                    <p>{{ i.DiscountCalc }}% off</p>
-                                </div>
-                                {% else %}
-                                <h6 class="card-title">
-                                    <span class="card-title" id="pricepr{{i.id}}">{{i.orginalPrice}}</span>
-                                </h6>
+                                <div style="display: contents; font-weight:bolder;">
+                                    {% if i.offer %}
+                                    <span class="origprice"
+                                        style="color: indianred;"><strike>₹{{ i.orginalPrice }}</strike></span>
+                                    <h6 class="card-title" style=" color: limegreen;">₹
+                                        <span class="card-title" id="pricepr{{i.id}}">{{i.price}}</span></h6>
 
-                                {% endif %}
+                                    {% else %}
+                                    <h6 class="card-title">
+                                        <span class="card-title" style="color: limegreen;"
+                                            id="pricepr{{i.id}}">₹{{i.orginalPrice}}</span>
+                                    </h6>
+
+                                    {% endif %}
+                                </div>
+
                             </div>
                         </div>
                     </div>
@@ -77,9 +91,9 @@
 
             updatePopover(cart);
             function updatePopover(cart) {
-                console.log('we are inside updatePopover');
+
                 var popStr = "";
-                var popStr = popStr + "<h5>Cart for your items in my shopping cart</h5><div class=' mx-2 my2'>";
+                var popStr = popStr + "<h5>Book your Packages.</h5><div class=' mx-2 my2'>";
                 var i = 1;
                 for (var item in cart) {
                     popStr = popStr + "<b>" + i + "</b>. ";
@@ -88,7 +102,7 @@
                 }
 
                 popStr = popStr + "</div> <a href='/package/checkout'><button class='btn btn-primary' id ='checkout'>Checkout</button></a> <button class='btn btn-primary' onclick='clearCart()' id ='clearCart'>Clear Cart</button>     "
-                console.log(popStr);
+
                 document.getElementById('popcart').setAttribute('data-content', popStr);
                 $('#popcart').popover('show');
                 $('#popcart').popover('show')

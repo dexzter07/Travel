@@ -1,11 +1,15 @@
 {% extends 'home/base.html' %}
 {% block title%}goXplores{% endblock %}
 {% block body %}
+<div class="container-fluid">
+    <img style="height: 47vh;
+    width: 100%;" src="/static/home/images/himalaya1.jpg" alt="image" />
+</div>
 <div class="container">
     <div class="row">
         <div class="col-md-4 order-md-2 mb-4">
             <h4 class="d-flex justify-content-between align-items-center mb-3">
-                <span class="text-muted">Your cart</span>
+                <span class="text-muted">Your Packages</span>
 
             </h4>
             <ul class="list-group mb-3" id="items">
@@ -24,9 +28,11 @@
 
         </div>
         <div class="col-md-8 order-md-1">
-            <h4 class="mb-3">Billing address</h4>
+            <h4 class="mb-3">Contact Details</h4>
             <form method="POST" action="/package/checkout/">{% csrf_token %}
                 <input type="hidden" name="itemsJson" id="itemsJson" />
+                <input type="hidden" name="amount" id="amount" />
+
                 <div class="row">
                     <div class="col-md-6 mb-3">
                         <label for="firstName">First name</label>
@@ -92,20 +98,20 @@
                     <div class="custom-control custom-radio">
                         <input id="credit" name="paymentMethod" type="radio" class="custom-control-input" checked
                             required>
-                        <label class="custom-control-label" for="credit">Credit card</label>
+                        <label class="custom-control-label" for="credit">Pay later</label>
+                        <p>
+                            <small>We beleive in pay later process. Just give us your package deals and your contact
+                                number
+                                and we
+                                will get in touch with you soon. </small>
+                        </p>
+
                     </div>
-                    <div class="custom-control custom-radio">
-                        <input id="debit" name="paymentMethod" type="radio" class="custom-control-input" required>
-                        <label class="custom-control-label" for="debit">Debit card</label>
-                    </div>
-                    <div class="custom-control custom-radio">
-                        <input id="paypal" name="paymentMethod" type="radio" class="custom-control-input" required>
-                        <label class="custom-control-label" for="paypal">PayPal</label>
-                    </div>
+
                 </div>
 
                 <hr class="mb-4">
-                <button class="btn btn-primary btn-lg btn-block" type="submit">Continue to checkout</button>
+                <button class="btn btn-primary btn-lg btn-block" type="submit">Book Your Packages...</button>
             </form>
         </div>
     </div>
@@ -123,7 +129,7 @@
     var totalPrice = 0;
     if ($.isEmptyObject(cart)) {
         //if object is empty
-        mystr = `<p>Your cart is empty, please add some items to your cart before checking out!</p>`
+        mystr = `<p>Your cart is empty, please add some package to your cart before booking!</p>`
         $('#items').append(mystr);
     } else {
         for (item in cart) {
@@ -152,6 +158,7 @@
     localStorage.clear();
     document.location = "/package";
     {% endif %}
-
+    // Adding amount to database
+    $('#amount').val($('#totalPrice').html())
 </script>
 {% endblock %}

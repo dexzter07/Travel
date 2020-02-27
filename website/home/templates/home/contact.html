@@ -43,16 +43,34 @@
 
         <aside class="col-md-4 blog-sidebar">
             <div class="p-4 mb-3 bg-light rounded">
-                <h4 class="font-italic">About</h4>
-                <p class="mb-0">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
-                    has been the industry's standard
-                    dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to
-                    make a type specimen
-                    book. It has survived not only five centuries, but also the leap into electronic typesetting,
-                    remaining essentially
-                    unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem
-                    Ipsum passages, and more
-                    recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum</p>
+                <h4 class="font-italic">What do we assure you about goXplores</h4>
+                <p class="mb-0">
+                    <ol>
+                        <li>
+                            goXplores is Tours and Travel Website which deals with all kind of domestic packages.
+                        </li>
+                        <li>
+                            goXplores itself is run by local expertise. So it plays an importanrt role here as we can
+                            recommend you with the
+                            memorable and autherntic experience to the holidays.
+
+                        </li>
+                        <li>
+                            goXplores will be available all the time if you want an individual help, from shopping to
+                            clubbing.
+
+                        </li>
+                        <li>
+                            goXplores also promises you to meet and greet personally so that we can have a strong
+                            connection with the customers.
+
+                        </li>
+                        <li>
+                            goXplores does not believe on middlemen, so we always pass the savings on to you.
+
+                        </li>
+                    </ol>
+                </p>
             </div>
 
 
@@ -77,4 +95,13 @@
         </aside>
     </div>
 </div>
+{% endblock %}
+{% block js %}
+<script>
+    {% if thank %}
+    alert('Thank you for Contacting Us, we will get in touch with you soon.')
+    localStorage.clear();
+    document.location = "/package";
+    {% endif %}
+</script>
 {% endblock %}

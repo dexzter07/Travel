@@ -75,6 +75,7 @@ class Orders(models.Model):
     city = models.CharField(max_length=250)
     state = models.CharField(max_length=100)
     zipcode = models.CharField(max_length=100)
+    amount = models.CharField(max_length=100)
 
     def __str__(self):
         return self.email
