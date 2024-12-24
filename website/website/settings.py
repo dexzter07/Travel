@@ -25,7 +25,7 @@ SECRET_KEY = '!8s@95#4d*g-@*=3m9n2bz%u*9-4aq6sryqb!1w*d9=l5g3r+n'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', '65.0.87.52']
+ALLOWED_HOSTS = ['127.0.0.1', '3.110.151.189']
 
 
 # Application definition
@@ -75,10 +75,22 @@ WSGI_APPLICATION = 'website.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': 'Traveldb',
+#     }
+# }
+
+# Postgresql
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': 'Traveldb',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'traveldb',
+        'USER': 'postgres',
+        'PASSWORD': 'Testpassword',
+        'HOST': 'database-1.c58044ywa5fr.ap-south-1.rds.amazonaws.com',
+        'PORT': '5432'
     }
 }
 
